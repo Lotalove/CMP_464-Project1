@@ -17,3 +17,12 @@ form {
     margin-bottom: 20px;
 }
 /* Add more styles as needed */
+
+.task{
+
+}
+.crossed_out{
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.6;   
+}
