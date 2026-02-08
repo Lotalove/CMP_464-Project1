@@ -7,17 +7,19 @@
 let tasks = [];
 
 const taskForm = document.getElementById("taskForm")
-const taskTable = document.getElementById("taskTable")
+const taskTable = document.getElementById("taskBody")
 
 // Function to handle form submissions
 
 function markTaskComplete(button){
    var  row = button.parentElement.parentElement
    row.classList.toggle('crossed_out')
+  
 }
 
 function removeTask(button){
       var  row = button.parentElement.parentElement
+      tasks.splice(row.name,1)
       row.remove()
 }
 function handleSubmission(event) {
@@ -38,9 +40,10 @@ render();
 // Function to render tasks in the table
 function render() {
 // TODO: Use array methods to create a new table row of data for each item in the arr
-taskTable.innerHTML = tasks.map(task => `
-    <tr>
-        <td>${task.name}</td>
+
+taskTable.innerHTML = tasks.map((task,idx) => `
+    <tr class="row" name=${idx}>
+        <td >${task.name}</td>
         <td>${task.description}</td>
         <td>${task.deadline}</td>
         <td><button onclick="markTaskComplete(this)">Complete</button></td>
